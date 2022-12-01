@@ -1,5 +1,6 @@
 const grid = document.querySelector(".grid");
 const scoreDisplay = document.querySelector("#score");
+const reset_btn = document.querySelector("#reset");
 const blockWidth = 100;
 const blockHeight = 20;
 const boardWidth = 560;
@@ -11,10 +12,10 @@ let yDirection = 2;
 let score = 0;
 
 const userStart = [230, 10];
-let currentPosition = userStart;
+let currentPosition = userStart; // kallar denna
 
 const ballStart = [270, 40];
-let ballCurrentPosition = ballStart;
+let ballCurrentPosition = ballStart; // kallar denna
 //create block
 class Block {
   constructor(xAxis, yAxis) {
@@ -54,6 +55,7 @@ console.log(blocks[0]);
 
 // draw my block
 function addBlock() {
+  console.log("addblock starts");
   for (let i = 0; i < blocks.length; i++) {
     const block = document.createElement("div");
     block.classList.add("block");
@@ -62,15 +64,19 @@ function addBlock() {
     grid.appendChild(block);
   }
 }
+addBlock(); // Kalla vid reset
 
-addBlock();
-
-// add user
 const user = document.createElement("div");
-user.classList.add("user");
-user.style.left = currentPosition[0] + "px";
-user.style.bottom = currentPosition[1] + "px";
-grid.appendChild(user);
+// add user INIT
+function startUser () {
+  console.log("start user starts");
+  //const user = document.createElement("div");
+  user.classList.add("user");
+  user.style.left = currentPosition[0] + "px";
+  user.style.bottom = currentPosition[1] + "px";
+  grid.appendChild(user);
+}
+startUser (); // Kalla vid reset
 
 //draw the ball
 function drawBall() {
@@ -104,11 +110,16 @@ function moveUser(e) {
 
 document.addEventListener("keydown", moveUser);
 
-// add ball
+// add ball INIT
 const ball = document.createElement("div");
-ball.classList.add("ball");
-drawBall();
-grid.appendChild(ball);
+
+function startBall () {
+  console.log("start ball starts");
+  ball.classList.add("ball");
+  drawBall();
+  grid.appendChild(ball);
+}
+startBall (); // Kalla vid reset
 
 //move the ball
 function moveBall() {
@@ -119,6 +130,14 @@ function moveBall() {
 }
 
 timerId = setInterval(moveBall, 10);
+
+reset_btn.addEventListener ('click', function () {
+      currentPosition = userStart;
+      ballCurrentPosition = ballStart;
+      addBlock();
+      startUser();
+      startBall();
+}); 
 
 function checkForCollisions() {
   for (let i = 0; i < blocks.length; i++) {
