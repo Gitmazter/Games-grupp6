@@ -214,3 +214,5 @@ function changeDirection() {
     return;
   }
 }
+
+scoreDisplay.style.left = 300 + "px";

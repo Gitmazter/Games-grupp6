@@ -30,4 +30,25 @@
     border-radius: 10px;
     background-color: red;
   }
+  button {
+    width: 70px;
+    height: 70px;
+    background-color: rgb(146, 202, 219);
+    border-radius: 10px;
+    border-style: outset;
+    border-top: none;
+    border-left: none;
+  }
+
+  #reset:hover {
+    border-style: inset;
+    border-bottom: none;
+    border-right: none;
+  }
+
+  #score {
+    position: absolute;
+    font-size: 50px;
+    left: 20px;
+  }
   
