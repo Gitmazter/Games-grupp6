@@ -6,6 +6,8 @@
     position: absolute;
     width: 560px;
     height: 300px;
+    background-image: url(./images/background_cropped.png);
+    background-size: cover;
     border: solid black 1px;
     margin-top: 80px;
   }

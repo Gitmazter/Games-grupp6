@@ -132,14 +132,24 @@ function moveBall() {
 timerId = setInterval(moveBall, 10);
 
 reset_btn.addEventListener ('click', function () {
+      /* grid.innerHTML= ""
+      xDirection = -2;
+      yDirection = 2;
       currentPosition = userStart;
+      drawUser();
       ballCurrentPosition = ballStart;
+      drawBall();
+      document.addEventListener("keydown", moveUser);
+      timerId = setInterval(moveBall, 10);
       addBlock();
       startUser();
-      startBall();
+      startBall(); */
+      // much easier
+      location.reload();
 }); 
 
 function checkForCollisions() {
+  console.log("checking for colissions")
   for (let i = 0; i < blocks.length; i++) {
     if (
       ballCurrentPosition[0] > blocks[i].bottomLeft[0] &&
